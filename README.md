@@ -1,2 +1,2 @@
-# React-Redux-Saga
-React Redux project example with Sagas
+# React-Redux-Saga-News-App
+React Redux News App with Sagas
