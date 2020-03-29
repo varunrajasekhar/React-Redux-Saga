@@ -1,9 +1,19 @@
-const reducer = (state = {}, action) => {
-    switch (action.type) {
+import { searchMovieInputChange } from "../actions";
+
+const INITIAL_STATE = {
+  article: null
+};
+
+const reducer = (state = {}, payload) => {
+    switch (payload.type) {
       case 'GET_NEWS':
         return { ...state, loading: true };
       case 'NEWS_RECEIVED':
-        return { ...state, news: action.json[0], loading: false }
+        state.article = payload.json;
+        state.loading = false;
+        return { ...state };
+      case 'CLICK_NEWS':
+        return {...state };
       default:
         return state;
     }

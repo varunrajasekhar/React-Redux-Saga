@@ -17,23 +17,26 @@ const errorMessage = {
   color: 'red'
 }
 
-let NewsItem = ({ article }) => (
+let NewsItem = ({ article }) => {
+  return (
   article ?
-    <article style={articleStyle} >
-      {article.error && <h2 style={errorMessage}>{article.error}</h2>}
-      {article.title && <div>
-        <h1>{article.title}</h1>
-        <img style={imgStyle} src={article.urlToImage} alt="" />
-        <h2>{article.description}</h2>
-        <a href={article.url} target="_blank">READ MORE</a>
+    article.map((data,i) => (<article key={i} style={articleStyle} >
+      {/* {article.error && <h2 style={errorMessage}>{article.error}</h2>} */}
+      {data.title && <div>
+        <h1>{data.title}</h1>
+        <img style={imgStyle} src={data.urlToImage} alt="" />
+        <h2>{data.description}</h2>
+        <a href={data.url} target="_blank">READ MORE</a>
       </div>}
-    </article> :
+    </article>)) :
     null
-);
+)};
 
-const mapStateToProps = (state) => ({
-  article: state.news,
+const mapStateToProps = (state) => {
+  return ({
+  article: state.article,
 })
+}
 
 NewsItem = connect(
   mapStateToProps,

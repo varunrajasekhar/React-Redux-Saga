@@ -14,10 +14,10 @@ class Button extends React.Component {
   render() {
     return (
       <button style={!this.state.hover ? styles : { ...styles, backgroundColor: 'DarkTurquoise ' }}
-        onMouseOut={() => { this.setState({ hover: false }) }}
-        onMouseOver={() => { this.setState({ hover: true }) }}
-        onClick={this.props.getNews}
-      >Press to see News</button>
+        onMouseOut={e => { e.persist(); this.setState({ hover: false }) }}
+        onMouseOver={e => { e.persist(); this.setState({ hover: true }) }}
+        onClick={e => {e.persist(); this.props.getNews()}}
+      >Press to see News</button> 
     );
   }
 
